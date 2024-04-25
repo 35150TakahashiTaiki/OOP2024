@@ -34,14 +34,14 @@ namespace Exersize2 {
             //ヤードからメートル
             private static void PrintYardtoMeter(int start, int stop) {
                 for (int yard = start; yard <= stop; yard++) {
-                    double meter = YardConverter.MeterToYard(yard);
+                    double meter = YardConverter.YardToMeter(yard);
                     Console.WriteLine("{0}yard = {1:0.0000}m", yard, meter);
                 }
             }
             //メートルからヤード
             private static void PrintMetertoYard(int start, int stop) {
                 for (int meter = start; meter <= stop; meter++) {
-                    double yard = YardConverter.YardToMeter(meter);
+                    double yard = YardConverter.MeterToYard(meter);
                     Console.WriteLine("{0}m = {1:0.0000}yard", meter, yard);
                 }
             }
