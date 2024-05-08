@@ -25,6 +25,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exercize1", "Chapter02\演�
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exersize2", "Chapter02\演習問題\Exersize2\Exersize2.csproj", "{C71DD257-5375-4027-A15B-4EE15D37137F}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FormApps", "FormApps", "{341C9E7A-720F-4C4F-AE59-8AA4B7C83561}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BallApp", "FormApps\BallApp\BallApp.csproj", "{1FAFDD6E-EAA1-467C-A6CE-456E3D4A9230}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +59,10 @@ Global
 		{C71DD257-5375-4027-A15B-4EE15D37137F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C71DD257-5375-4027-A15B-4EE15D37137F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C71DD257-5375-4027-A15B-4EE15D37137F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1FAFDD6E-EAA1-467C-A6CE-456E3D4A9230}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FAFDD6E-EAA1-467C-A6CE-456E3D4A9230}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FAFDD6E-EAA1-467C-A6CE-456E3D4A9230}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FAFDD6E-EAA1-467C-A6CE-456E3D4A9230}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -69,6 +77,7 @@ Global
 		{70061051-237C-4BD0-95A6-7B5143EF252D} = {AA7867C6-FF0C-4A34-8F88-FB23645121C6}
 		{BFA0BA66-2B37-4782-A14A-2BCB484A1491} = {70061051-237C-4BD0-95A6-7B5143EF252D}
 		{C71DD257-5375-4027-A15B-4EE15D37137F} = {70061051-237C-4BD0-95A6-7B5143EF252D}
+		{1FAFDD6E-EAA1-467C-A6CE-456E3D4A9230} = {341C9E7A-720F-4C4F-AE59-8AA4B7C83561}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {92AAEDCC-0036-4922-B3B9-E5FCC55D3987}
