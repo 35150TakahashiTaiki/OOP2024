@@ -1,6 +1,6 @@
 namespace BallApp {
     public partial class Form1 : Form {
-        Obj obj;
+        Obj ball;
         PictureBox pb;
         
 
@@ -21,8 +21,8 @@ namespace BallApp {
 
         private void timer1_Tick(object sender, EventArgs e) {
             
-            obj.Move();
-            pb.Location = new Point((int)obj.PosX, (int)obj.PosY);
+            ball.Move();
+            pb.Location = new Point((int)ball.PosX, (int)ball.PosY);
             
         }
 
@@ -31,21 +31,17 @@ namespace BallApp {
                 
             if (e.Button == MouseButtons.Left) {
                 pb.Size = new Size(50, 50);
-                obj = new SoccerBall(e.X-25, e.Y-25);
-                pb.Image = obj.Image;
-                pb.Location = new Point((int)obj.PosX, (int)obj.PosY);
-                pb.SizeMode = PictureBoxSizeMode.StretchImage;
-                pb.Parent = this;
-                timer1.Start();
+                ball = new SoccerBall(e.X-25, e.Y-25);
+               
             }else if(e.Button == MouseButtons.Right) {
                 pb.Size = new Size(25, 25);
-                obj = new TennisBall(e.X-12.5, e.Y-12.5);
-                pb.Image = obj.Image;
-                pb.Location = new Point((int)obj.PosX, (int)obj.PosY);
-                pb.SizeMode = PictureBoxSizeMode.StretchImage;
-                pb.Parent = this;
-                timer1.Start();
+                ball = new TennisBall(e.X-12.5, e.Y-12.5);
             }
+            pb.Image = ball.Image;
+            pb.Location = new Point((int)ball.PosX, (int)ball.PosY);
+            pb.SizeMode = PictureBoxSizeMode.StretchImage;
+            pb.Parent = this;
+            timer1.Start();
         }
     }
 }
