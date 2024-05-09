@@ -13,7 +13,7 @@ namespace BallApp {
             MoveY = 0;
         }
 
-        public override bool Move() {
+        public override bool Move(PictureBox pdBar, PictureBox pdBall) {
             return true;
         }
 

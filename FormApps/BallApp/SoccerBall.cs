@@ -16,7 +16,11 @@ namespace BallApp {
             Count++;
         }
 
-        public override bool Move() {
+        public override bool Move(PictureBox pdBar, PictureBox pdBall) {
+
+            Rectangle rBar = new Rectangle(pdBar.Location.X,pdBar.Location.Y,pdBar.Width,pdBar.Height);
+            Rectangle rBall = new Rectangle(pdBall.Location.X, pdBall.Location.Y, pdBall.Width, pdBall.Height);
+
             if (PosX >= 750 || PosX < 0) {
                 MoveX = -MoveX;
             }
