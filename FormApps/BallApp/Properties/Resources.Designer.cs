@@ -63,6 +63,16 @@ namespace BallApp.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
+        internal static System.Drawing.Bitmap bar {
+            get {
+                object obj = ResourceManager.GetObject("bar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
         internal static System.Drawing.Bitmap soccer_ball {
             get {
                 object obj = ResourceManager.GetObject("soccer_ball", resourceCulture);
