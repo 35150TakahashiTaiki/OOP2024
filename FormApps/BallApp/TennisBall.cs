@@ -10,9 +10,10 @@ namespace BallApp {
         public static int Count { get; set; }
         public TennisBall(double xp, double yp)
            : base(xp, yp, @"Picture\tennis_ball.png") {
-        MoveX = -10;//移動量設定
-        MoveY = -10;
-        Count++;
+            var rand = new Random();
+            MoveX = rand.Next(-20, 20);//移動量設定
+            MoveY = rand.Next(-20, 20);
+            Count++;
         }
 
         public override bool Move() {
