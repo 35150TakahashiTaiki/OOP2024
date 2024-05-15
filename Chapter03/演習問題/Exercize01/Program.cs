@@ -27,7 +27,7 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_1(List<int> numbers) {
-            var exists = numbers.Exists(s => s % 8 == 0 || s % 9 == 0);
+           var exists = numbers.Exists(s => s % 8 == 0 || s % 9 == 0);
             Console.WriteLine(exists);
         }
 
@@ -36,11 +36,13 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_3(List<int> numbers) {
-            
+            var query = numbers.Where(s => s >= 50);
+            Console.WriteLine(query);
         }
 
         private static void Exercise1_4(List<int> numbers) {
-            
+            var query = numbers.Select(s => s*2);
+            Console.WriteLine(query);
         }
     }
 }
