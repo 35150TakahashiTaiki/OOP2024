@@ -13,8 +13,8 @@ namespace BallApp {
             MoveY = 0;
         }
 
-        public override bool Move(PictureBox pdBar, PictureBox pdBall) {
-            return true;
+        public override int Move(PictureBox pdBar, PictureBox pdBall) {
+            return 0;
         }
 
         public override bool Move(Keys direction) {
