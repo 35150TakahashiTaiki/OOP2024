@@ -10,9 +10,15 @@ namespace BallApp {
         public static int Count {  get; set; }
         public SoccerBall(double xp,double yp)
         : base(xp, yp,@"Picture\soccer_ball.png"){
-            var rand = new Random();
+        var rand = new Random();
+#if DEBUG
+            MoveX = 5;
+            MoveY = 5;
+#else
+            
             MoveX = rand.Next( -20,20);//移動量設定
             MoveY = rand.Next(-20, 20);
+#endif
             Count++;
         }
 
