@@ -12,7 +12,7 @@ namespace Exercise02 {
             string str = Console.ReadLine();        
             bool result = int.TryParse(str,out number);
             if (result) {
-                Console.WriteLine($"{str,8:#,0}");
+                Console.WriteLine(number.ToString("#,#"));
             } else {
                 Console.WriteLine("false");
             }
