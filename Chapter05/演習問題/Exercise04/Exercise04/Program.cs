@@ -12,7 +12,12 @@ namespace Exercise04 {
             string[] subs = line.Split(';');
             foreach (var sub in subs) {
                 string[] cut = sub.Split('=');
-                Console.WriteLine(cut.Length);
+                foreach (var cut2 in cut) {
+                    if (cut2.Contains("Novelist")) {
+                        var chang = cut2.Replace("Novelist", "作家　：");
+                    }
+                    Console.WriteLine(cut2);
+                }
             }
 
         }
