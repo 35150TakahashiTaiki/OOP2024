@@ -9,6 +9,7 @@ namespace Exercise03 {
     internal class Program {
         static void Main(string[] args) {
             var text = "Jackdaws love my big sphinx of quartz";
+            var text2 = "Jackdaws,love my-big/sphinx:of#quartz";
 
             Exercise3_1(text);
             Console.WriteLine("-----");
@@ -23,7 +24,12 @@ namespace Exercise03 {
             Console.WriteLine("-----");
 
             Exercise3_5(text);
+            Console.WriteLine("-----");
+
+            Exercise3_6(text2);
         }
+
+       
 
         private static void Exercise3_1(string text) {
             char ch = ' ';
@@ -42,10 +48,9 @@ namespace Exercise03 {
         }
 
         private static void Exercise3_4(string text) {
-            string[] subs = text.Split();
+            var subs = text.Split().Where(s => s.Length <= 4);
             foreach (string sub in subs) {
-               if(sub.Length <= 4)
-                    Console.WriteLine(sub);
+                Console.WriteLine(sub);
             }
         }
 
@@ -54,6 +59,18 @@ namespace Exercise03 {
             var sb = new StringBuilder();
             foreach (var word in subs) {
                 sb.Append(word);
+                sb.Append(' ');
+            }
+            var tx = sb.ToString();
+            Console.WriteLine(tx);
+        } 
+        
+        private static void Exercise3_6(string text2) {
+            string[] subs = text2.Split(' ',',','-','^','/',':','#');
+            var sb = new StringBuilder();
+            foreach (var word in subs) {
+                sb.Append(word);
+                sb.Append(' ');
             }
             var tx = sb.ToString();
             Console.WriteLine(tx);
