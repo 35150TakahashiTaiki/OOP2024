@@ -12,7 +12,8 @@ namespace Exercise02 {
             string str = Console.ReadLine();        
             bool result = int.TryParse(str,out number);
             if (result) {
-                Console.WriteLine(number.ToString("#,#"));
+                Console.WriteLine("0{:#,#}",number); 
+                //Console.WriteLine(number.ToString("#,#"));
             } else {
                 Console.WriteLine("false");
             }
