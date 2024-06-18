@@ -67,16 +67,15 @@ namespace Test02 {
         //問題１　合計値を表示
         //　　　　出力結果【618】
         private static void Exercise01(List<int> numbers) {
-
-
-
+            var total = numbers.Sum();
+            Console.WriteLine(total);
         }
 
         //問題２　偶数の最大値を表示
         //　　　　出力結果【94】
         private static void Exercise02(List<int> numbers) {
-
-
+            var number = numbers.Max();//放置
+            Console.WriteLine(number);
 
         }
         //問題３　奇数のみを降順に並べて表示（遅延実行とする）

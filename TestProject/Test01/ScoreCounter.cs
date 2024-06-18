@@ -35,10 +35,10 @@ namespace Test01 {
         public IDictionary<string, int> GetPerStudentScore() {
             var dict = new Dictionary<string, int>();
             foreach (var sale in _score) {
-                if (dict.ContainsKey(sale.Name)) {
-                    dict[sale.Name] += sale.Score;
+                if (dict.ContainsKey(sale.Subject)) {
+                    dict[sale.Subject] += sale.Score;
                 } else {
-                    dict[sale.Name] = sale.Score;
+                    dict[sale.Subject] = sale.Score;
                 }
             }
             return dict;
