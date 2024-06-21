@@ -117,15 +117,15 @@ namespace Test02 {
         //　　　　出力結果【山田隆司 68kg
         //　　　　　　　　　沖田宏一 59kg
         //　　　　　　　　　片山伸介 65kg】
-        private static void Exercise07(List<Person> persons) {
+        /*private static void Exercise07(List<Person> persons) {
             var book = persons.FirstOrDefault(b => b.Weight >= 70);
             var selected = persons.Where(b => b.Weight <= 70);
-            //foreach (var book in selected) {
-               // Console.WriteLine("{0} {1}", book.Name, book.Weight);
+            foreach (var book in selected) {
+                Console.WriteLine("{0} {1}", book.Name, book.Weight);
             }
 
 
-        }
+        }*/
 
         //問題８　名前に「山」の漢字が含まれている人全て表示
         //　　　　出力結果【山田隆司
