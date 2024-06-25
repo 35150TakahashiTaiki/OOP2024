@@ -19,8 +19,20 @@ namespace Exercise01 {
 
         private void btEX8_2_Click(object sender, EventArgs e) {
             var today = DateTime.Today;
-            DateTime nextWeek = NextDay(today,DayOfWeek.Monday);
-            tbDisp2.Text = nextWeek.ToString();
+            DateTime nextWeekMon = NextDay(today,DayOfWeek.Monday);
+            DateTime nextWeekThes = NextDay(today, DayOfWeek.Tuesday);
+            DateTime nextWeekWed = NextDay(today, DayOfWeek.Wednesday);
+            DateTime nextWeekThurs = NextDay(today, DayOfWeek.Thursday);
+            DateTime nextWeekFri = NextDay(today, DayOfWeek.Friday);
+            DateTime nextWeekSat = NextDay(today, DayOfWeek.Saturday);
+            DateTime nextWeekSun = NextDay(today, DayOfWeek.Sunday);
+            tbDisp2.Text = nextWeekMon.ToString("d") + "\r\n" +
+                           nextWeekThes.ToString("d") + "\r\n" +
+                           nextWeekWed.ToString("d") + "\r\n" +
+                           nextWeekThurs.ToString("d") + "\r\n" +
+                           nextWeekFri.ToString("d") + "\r\n" +
+                           nextWeekSat.ToString("d") + "\r\n" +
+                           nextWeekSun.ToString("d");
         }
 
         public static DateTime NextDay(DateTime date,DayOfWeek dayOfWeek) {
