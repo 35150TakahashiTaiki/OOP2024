@@ -28,14 +28,14 @@ namespace Section01 {
             #region 和暦表示
             var culture = new CultureInfo("ja-JP");
             culture.DateTimeFormat.Calendar = new JapaneseCalendar();
-            var str = birthday.ToString("ggyy年M月d日", culture);
+            var str = birthday.ToString("ggyy年M月d日dddd", culture);
             Console.WriteLine("あなたは{0}に生まれました",str);
             #endregion
 
             #region 生まれてからの日数
             var now =DateTime.Now;
-            TimeSpan ts1 = now - birthday;
-            Console.WriteLine("あなたは生まれてから今日で{0}日目です",ts1.Days+1);
+            TimeSpan diff = now - birthday;
+            Console.WriteLine("あなたは生まれてから今日で{0}日目です",diff.Days+1);
             #endregion
 
             #region 閏年判定
