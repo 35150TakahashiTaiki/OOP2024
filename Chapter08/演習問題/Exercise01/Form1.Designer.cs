@@ -27,6 +27,8 @@
             tbDisp = new TextBox();
             btEX8_2 = new Button();
             tbDisp2 = new TextBox();
+            btEx8_3 = new Button();
+            tbDisp3 = new TextBox();
             SuspendLayout();
             // 
             // btEX8_1
@@ -62,17 +64,40 @@
             // 
             // tbDisp2
             // 
-            tbDisp2.Location = new Point(506, 108);
+            tbDisp2.Font = new Font("Yu Gothic UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 128);
+            tbDisp2.Location = new Point(467, 108);
             tbDisp2.Multiline = true;
             tbDisp2.Name = "tbDisp2";
-            tbDisp2.Size = new Size(320, 353);
+            tbDisp2.Size = new Size(394, 221);
             tbDisp2.TabIndex = 3;
+            // 
+            // btEx8_3
+            // 
+            btEx8_3.Font = new Font("Yu Gothic UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 128);
+            btEx8_3.Location = new Point(929, 31);
+            btEx8_3.Name = "btEx8_3";
+            btEx8_3.Size = new Size(169, 71);
+            btEx8_3.TabIndex = 4;
+            btEx8_3.Text = "問題8.3";
+            btEx8_3.UseVisualStyleBackColor = true;
+            btEx8_3.Click += btEx8_3_Click;
+            // 
+            // tbDisp3
+            // 
+            tbDisp3.Font = new Font("Yu Gothic UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 128);
+            tbDisp3.Location = new Point(929, 108);
+            tbDisp3.Multiline = true;
+            tbDisp3.Name = "tbDisp3";
+            tbDisp3.Size = new Size(169, 136);
+            tbDisp3.TabIndex = 5;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1195, 620);
+            Controls.Add(tbDisp3);
+            Controls.Add(btEx8_3);
             Controls.Add(tbDisp2);
             Controls.Add(btEX8_2);
             Controls.Add(tbDisp);
@@ -89,5 +114,7 @@
         private TextBox tbDisp;
         private Button btEX8_2;
         private TextBox tbDisp2;
+        private Button btEx8_3;
+        private TextBox tbDisp3;
     }
 }

@@ -1,3 +1,4 @@
+using Microsoft.VisualBasic;
 using System.Globalization;
 
 namespace Exercise01 {
@@ -19,29 +20,40 @@ namespace Exercise01 {
 
         private void btEX8_2_Click(object sender, EventArgs e) {
             var today = DateTime.Today;
-            DateTime nextWeekMon = NextDay(today,DayOfWeek.Monday);
-            DateTime nextWeekThes = NextDay(today, DayOfWeek.Tuesday);
-            DateTime nextWeekWed = NextDay(today, DayOfWeek.Wednesday);
-            DateTime nextWeekThurs = NextDay(today, DayOfWeek.Thursday);
-            DateTime nextWeekFri = NextDay(today, DayOfWeek.Friday);
-            DateTime nextWeekSat = NextDay(today, DayOfWeek.Saturday);
-            DateTime nextWeekSun = NextDay(today, DayOfWeek.Sunday);
-            tbDisp2.Text = nextWeekMon.ToString("d") + "\r\n" +
-                           nextWeekThes.ToString("d") + "\r\n" +
-                           nextWeekWed.ToString("d") + "\r\n" +
-                           nextWeekThurs.ToString("d") + "\r\n" +
-                           nextWeekFri.ToString("d") + "\r\n" +
-                           nextWeekSat.ToString("d") + "\r\n" +
-                           nextWeekSun.ToString("d");
+
+            foreach (var dayofweek in Enum.GetValues(typeof(DayOfWeek))) {
+                DateTime nextWeek = NextDay(today, (DayOfWeek)dayofweek);
+                var str = string.Format("{0:yy/MM/dd}ÇÃéüèTÇÃ{1}:{2}", today, (DayOfWeek)dayofweek, nextWeek.ToString("d"));
+                tbDisp2.Text += str + "\r\n";
+            }
+
         }
 
-        public static DateTime NextDay(DateTime date,DayOfWeek dayOfWeek) {
-            var days =(int)dayOfWeek - (int)(date.DayOfWeek);
-            if (days <= 0) {
-                days += 7;
-                return date.AddDays(days);
-            }
+        public static DateTime NextDay(DateTime date, DayOfWeek dayOfWeek) {
+            var days = (int)dayOfWeek - (int)(date.DayOfWeek);
+            days += 7;
             return date.AddDays(days);
+        }
+
+        private void btEx8_3_Click(object sender, EventArgs e) {
+            var tw = new TimeWatch();
+            tw.Start();
+            Thread.Sleep(3000);
+            TimeSpan duration = tw.Stop();
+            var str = string.Format("èàóùéûä‘ÇÕ{0}É~ÉäïbÇ≈ÇµÇΩ",duration.TotalSeconds);
+            tbDisp3.Text = str;
+        }
+    }
+
+    class TimeWatch {
+        private DateTime date;
+        public void Start() {
+            date = DateTime.Now;
+        }
+
+        public TimeSpan Stop() {
+        var stop = DateTime.Now;
+            return stop- date;
         }
     }
 }
