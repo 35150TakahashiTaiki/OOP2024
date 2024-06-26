@@ -38,7 +38,7 @@ namespace Exercise01 {
         private void btEx8_3_Click(object sender, EventArgs e) {
             var tw = new TimeWatch();
             tw.Start();
-            Thread.Sleep(3000);
+            Thread.Sleep(500);
             TimeSpan duration = tw.Stop();
             var str = string.Format("ˆ—ŠÔ‚Í{0}ƒ~ƒŠ•b‚Å‚µ‚½",duration.TotalSeconds);
             tbDisp3.Text = str;
