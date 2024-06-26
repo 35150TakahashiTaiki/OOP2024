@@ -32,6 +32,7 @@
             cbCarName = new ComboBox();
             label5 = new Label();
             groupBox1 = new GroupBox();
+            rbInport = new RadioButton();
             rbAther = new RadioButton();
             rbSubaru = new RadioButton();
             rbHonda = new RadioButton();
@@ -50,7 +51,6 @@
             btReportOpen = new Button();
             btReportSave = new Button();
             button8 = new Button();
-            rbInport = new RadioButton();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbPicture).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dvgCarReport).BeginInit();
@@ -145,6 +145,17 @@
             groupBox1.Size = new Size(364, 37);
             groupBox1.TabIndex = 9;
             groupBox1.TabStop = false;
+            // 
+            // rbInport
+            // 
+            rbInport.AutoSize = true;
+            rbInport.Location = new Point(235, 12);
+            rbInport.Name = "rbInport";
+            rbInport.Size = new Size(61, 19);
+            rbInport.TabIndex = 1;
+            rbInport.TabStop = true;
+            rbInport.Text = "輸入車";
+            rbInport.UseVisualStyleBackColor = true;
             // 
             // rbAther
             // 
@@ -255,6 +266,7 @@
             btAddReport.TabIndex = 15;
             btAddReport.Text = "追加";
             btAddReport.UseVisualStyleBackColor = true;
+            btAddReport.Click += btAddReport_Click;
             // 
             // btModifyReport
             // 
@@ -325,17 +337,6 @@
             button8.TabIndex = 22;
             button8.Text = "終了";
             button8.UseVisualStyleBackColor = true;
-            // 
-            // rbInport
-            // 
-            rbInport.AutoSize = true;
-            rbInport.Location = new Point(235, 12);
-            rbInport.Name = "rbInport";
-            rbInport.Size = new Size(61, 19);
-            rbInport.TabIndex = 1;
-            rbInport.TabStop = true;
-            rbInport.Text = "輸入車";
-            rbInport.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
