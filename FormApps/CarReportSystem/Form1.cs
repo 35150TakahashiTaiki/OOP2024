@@ -92,14 +92,22 @@ namespace CarReportSystem {
         }
 
         private void btDeleteReport_Click(object sender, EventArgs e) {
-            DataGridViewSelectedRowCollection src = dvgCarReport.SelectedRows;
-            for (int i = src.Count - 1; i >= 0; i--) {
-                dvgCarReport.Rows.RemoveAt(src[i].Index);
-            }
+            listCarReports.RemoveAt(dvgCarReport.CurrentRow.Index);
+
         }
 
         private void btModifyReport_Click(object sender, EventArgs e) {
-
+            listCarReports.RemoveAt(dvgCarReport.CurrentRow.Index);
+            CarReport carReport = new CarReport {
+                Date = dtpDate.Value,
+                Author = cbAuthor.Text,
+                Maker = GetRadioButtonMaker(),
+                CarName = cbCarName.Text,
+                Report = tbCarReport.Text,
+                Picture = pbPicture.Image,
+            };
+            listCarReports.Add(carReport);
+            dvgCarReport.Refresh();//データグリッドビューの更新
         }
     }
 }
