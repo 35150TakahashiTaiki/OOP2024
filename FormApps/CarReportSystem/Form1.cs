@@ -1,5 +1,6 @@
 using System.ComponentModel;
 using System.Diagnostics.Metrics;
+using System.Windows.Forms;
 
 namespace CarReportSystem {
     public partial class Form1 : Form {
@@ -16,34 +17,89 @@ namespace CarReportSystem {
         private void btAddReport_Click(object sender, EventArgs e) {
             CarReport carReport = new CarReport {
                 Date = dtpDate.Value,
-                Auther = cbAuther.Text,
+                Author = cbAuthor.Text,
                 Maker = GetRadioButtonMaker(),
                 CarName = cbCarName.Text,
                 Report = tbCarReport.Text,
-                //Picture =
-
+                Picture = pbPicture.Image,
             };
             listCarReports.Add(carReport);
         }
 
         //選択されているメーカーを列挙型で返す
         private CarReport.MakerGroup GetRadioButtonMaker() {
-            if(rbToyota.Checked) {
+            if (rbToyota.Checked) {
                 return CarReport.MakerGroup.トヨタ;
-            }
-            else if (rbNissan.Checked) {
+            } else if (rbNissan.Checked) {
                 return CarReport.MakerGroup.日産;
-            }
-            else if (rbHonda.Checked) {
+            } else if (rbHonda.Checked) {
                 return CarReport.MakerGroup.ホンダ;
-            }
-            else if (rbSubaru.Checked) {
+            } else if (rbSubaru.Checked) {
                 return CarReport.MakerGroup.スバル;
-            }
-            else if (rbInport.Checked) {
+            } else if (rbInport.Checked) {
                 return CarReport.MakerGroup.輸入車;
+            } else return CarReport.MakerGroup.その他;
+        }
+
+        //指定したラジオボタンをセット
+        private void setRadioButtonMaker(CarReport.MakerGroup targetMaker) {
+            switch (targetMaker) {
+                case CarReport.MakerGroup.トヨタ:
+                    rbToyota.Checked = true;
+                    break;
+                case CarReport.MakerGroup.日産:
+                    rbNissan.Checked = true;
+                    break;
+                case CarReport.MakerGroup.ホンダ:
+                    rbHonda.Checked = true;
+                    break;
+                case CarReport.MakerGroup.スバル:
+                    rbSubaru.Checked = true;
+                    break;
+                case CarReport.MakerGroup.輸入車:
+                    rbInport.Checked = true;
+                    break;
+                case CarReport.MakerGroup.その他:
+                    rbHonda.Checked = true;
+                    break;
             }
-            else return CarReport.MakerGroup.その他;
+
+        }
+
+        private void btPicOpen_Click(object sender, EventArgs e) {
+            if (ofdPicFileOpen.ShowDialog() == DialogResult.OK)
+                pbPicture.Image = Image.FromFile(ofdPicFileOpen.FileName);
+        }
+
+        private void btPicDelete_Click(object sender, EventArgs e) {
+            pbPicture.Image = null;
+        }
+
+        private void Form1_Load(object sender, EventArgs e) {
+            dvgCarReport.Columns["Picture"].Visible = false; //Picture列の非表示
+        }
+
+        private void dvgCarReport_Click(object sender, EventArgs e) {
+            if (dvgCarReport.Rows.Count == 0) return;
+
+            dtpDate.Value = (DateTime)dvgCarReport.CurrentRow.Cells["Date"].Value;
+            cbAuthor.Text = (string)dvgCarReport.CurrentRow.Cells["Author"].Value;
+            setRadioButtonMaker((CarReport.MakerGroup)dvgCarReport.CurrentRow.Cells["Maker"].Value);
+            cbCarName.Text = (string)dvgCarReport.CurrentRow.Cells["CarName"].Value;
+            tbCarReport.Text = (string)dvgCarReport.CurrentRow.Cells["Report"].Value;
+            pbPicture.Image = (Image)dvgCarReport.CurrentRow.Cells["Picture"].Value;
+
+        }
+
+        private void btDeleteReport_Click(object sender, EventArgs e) {
+            DataGridViewSelectedRowCollection src = dvgCarReport.SelectedRows;
+            for (int i = src.Count - 1; i >= 0; i--) {
+                dvgCarReport.Rows.RemoveAt(src[i].Index);
+            }
+        }
+
+        private void btModifyReport_Click(object sender, EventArgs e) {
+
         }
     }
 }
