@@ -26,6 +26,17 @@ namespace CarReportSystem {
             listCarReports.Add(carReport);
         }
 
+        //記録者の履歴をコンボボックスへ登録（重複なし）
+        private void setCbAuther(string auther) {
+
+        }
+
+        //車名の履歴をコンボボックスへ登録（登録なし）
+        private void setCbCarName(string carName) {
+
+
+        }
+
         //選択されているメーカーを列挙型で返す
         private CarReport.MakerGroup GetRadioButtonMaker() {
             if (rbToyota.Checked) {
@@ -97,16 +108,13 @@ namespace CarReportSystem {
         }
 
         private void btModifyReport_Click(object sender, EventArgs e) {
-            listCarReports.RemoveAt(dvgCarReport.CurrentRow.Index);
-            CarReport carReport = new CarReport {
-                Date = dtpDate.Value,
-                Author = cbAuthor.Text,
-                Maker = GetRadioButtonMaker(),
-                CarName = cbCarName.Text,
-                Report = tbCarReport.Text,
-                Picture = pbPicture.Image,
-            };
-            listCarReports.Add(carReport);
+            listCarReports[dvgCarReport.CurrentRow.Index].Date = dtpDate.Value;
+            listCarReports[dvgCarReport.CurrentRow.Index].Author= cbAuthor.Text;
+            listCarReports[dvgCarReport.CurrentRow.Index].Maker = GetRadioButtonMaker();
+            listCarReports[dvgCarReport.CurrentRow.Index].CarName = cbCarName.Text;
+            listCarReports[dvgCarReport.CurrentRow.Index].Report = tbCarReport.Text;
+            listCarReports[dvgCarReport.CurrentRow.Index].Picture = pbPicture.Image;
+      
             dvgCarReport.Refresh();//データグリッドビューの更新
         }
     }
