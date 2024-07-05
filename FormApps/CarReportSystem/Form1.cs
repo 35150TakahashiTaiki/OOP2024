@@ -124,7 +124,8 @@ namespace CarReportSystem {
         }
 
         private void dvgCarReport_Click(object sender, EventArgs e) {
-            if (dvgCarReport.Rows.Count == 0) return;
+            if ((dvgCarReport.Rows.Count == 0)||(!dvgCarReport.CurrentRow.Selected)) return;
+            
             dtpDate.Value = (DateTime)dvgCarReport.CurrentRow.Cells["Date"].Value;
             cbAuthor.Text = (string)dvgCarReport.CurrentRow.Cells["Author"].Value;
             setRadioButtonMaker((CarReport.MakerGroup)dvgCarReport.CurrentRow.Cells["Maker"].Value);
@@ -136,13 +137,13 @@ namespace CarReportSystem {
 
         //çÌèú
         private void btDeleteReport_Click(object sender, EventArgs e) {
-            if (listCarReports.Count == 0) return;
+            if (listCarReports.Count == 0 || (!dvgCarReport.CurrentRow.Selected)) return;
             listCarReports.RemoveAt(dvgCarReport.CurrentRow.Index);
             dvgCarReport.ClearSelection();
         }
         //èCê≥
         private void btModifyReport_Click(object sender, EventArgs e) {
-            if (listCarReports.Count == 0) return;
+            if (listCarReports.Count == 0 || (!dvgCarReport.CurrentRow.Selected)) return;
 
 
             if (cbAuthor.Text == "" || cbCarName.Text == "") {
