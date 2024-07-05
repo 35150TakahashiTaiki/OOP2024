@@ -32,7 +32,6 @@
             cbCarName = new ComboBox();
             label5 = new Label();
             groupBox1 = new GroupBox();
-            rbNone = new RadioButton();
             rbInport = new RadioButton();
             rbAther = new RadioButton();
             rbSubaru = new RadioButton();
@@ -141,7 +140,6 @@
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(rbNone);
             groupBox1.Controls.Add(rbInport);
             groupBox1.Controls.Add(rbAther);
             groupBox1.Controls.Add(rbSubaru);
@@ -150,20 +148,9 @@
             groupBox1.Controls.Add(rbToyota);
             groupBox1.Location = new Point(119, 77);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(419, 37);
+            groupBox1.Size = new Size(364, 37);
             groupBox1.TabIndex = 9;
             groupBox1.TabStop = false;
-            // 
-            // rbNone
-            // 
-            rbNone.AutoSize = true;
-            rbNone.Location = new Point(365, 11);
-            rbNone.Name = "rbNone";
-            rbNone.Size = new Size(43, 19);
-            rbNone.TabIndex = 2;
-            rbNone.TabStop = true;
-            rbNone.Text = "なし";
-            rbNone.UseVisualStyleBackColor = true;
             // 
             // rbInport
             // 
@@ -179,6 +166,7 @@
             // rbAther
             // 
             rbAther.AutoSize = true;
+            rbAther.Checked = true;
             rbAther.Location = new Point(302, 12);
             rbAther.Name = "rbAther";
             rbAther.Size = new Size(56, 19);
@@ -243,7 +231,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Yu Gothic UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 128);
-            label6.Location = new Point(621, 12);
+            label6.Location = new Point(525, 12);
             label6.Name = "label6";
             label6.Size = new Size(50, 25);
             label6.TabIndex = 11;
@@ -251,7 +239,7 @@
             // 
             // btPicOpen
             // 
-            btPicOpen.Location = new Point(693, 20);
+            btPicOpen.Location = new Point(597, 20);
             btPicOpen.Name = "btPicOpen";
             btPicOpen.Size = new Size(75, 23);
             btPicOpen.TabIndex = 12;
@@ -261,7 +249,7 @@
             // 
             // btPicDelete
             // 
-            btPicDelete.Location = new Point(831, 20);
+            btPicDelete.Location = new Point(735, 20);
             btPicDelete.Name = "btPicDelete";
             btPicDelete.Size = new Size(75, 23);
             btPicDelete.TabIndex = 13;
@@ -272,7 +260,7 @@
             // pbPicture
             // 
             pbPicture.BackColor = Color.FromArgb(192, 255, 255);
-            pbPicture.Location = new Point(621, 49);
+            pbPicture.Location = new Point(525, 49);
             pbPicture.Name = "pbPicture";
             pbPicture.Size = new Size(338, 236);
             pbPicture.SizeMode = PictureBoxSizeMode.Zoom;
@@ -282,7 +270,7 @@
             // btAddReport
             // 
             btAddReport.Font = new Font("Yu Gothic UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 128);
-            btAddReport.Location = new Point(634, 309);
+            btAddReport.Location = new Point(538, 309);
             btAddReport.Name = "btAddReport";
             btAddReport.Size = new Size(75, 38);
             btAddReport.TabIndex = 15;
@@ -293,7 +281,7 @@
             // btModifyReport
             // 
             btModifyReport.Font = new Font("Yu Gothic UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 128);
-            btModifyReport.Location = new Point(759, 309);
+            btModifyReport.Location = new Point(663, 309);
             btModifyReport.Name = "btModifyReport";
             btModifyReport.Size = new Size(75, 38);
             btModifyReport.TabIndex = 16;
@@ -304,7 +292,7 @@
             // btDeleteReport
             // 
             btDeleteReport.Font = new Font("Yu Gothic UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 128);
-            btDeleteReport.Location = new Point(884, 309);
+            btDeleteReport.Location = new Point(788, 309);
             btDeleteReport.Name = "btDeleteReport";
             btDeleteReport.Size = new Size(75, 38);
             btDeleteReport.TabIndex = 17;
@@ -376,7 +364,8 @@
             ssMessageArea.Items.AddRange(new ToolStripItem[] { tslbMessage });
             ssMessageArea.Location = new Point(0, 645);
             ssMessageArea.Name = "ssMessageArea";
-            ssMessageArea.Size = new Size(988, 22);
+            ssMessageArea.Size = new Size(889, 22);
+            ssMessageArea.SizingGrip = false;
             ssMessageArea.TabIndex = 23;
             ssMessageArea.Text = "statusStrip1";
             // 
@@ -389,7 +378,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(988, 667);
+            ClientSize = new Size(889, 667);
             Controls.Add(ssMessageArea);
             Controls.Add(button8);
             Controls.Add(btReportSave);
@@ -413,6 +402,8 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
             Name = "Form1";
             Text = "試乗レポート管理システム";
             Load += Form1_Load;
@@ -459,6 +450,5 @@
         private OpenFileDialog ofdPicFileOpen;
         private StatusStrip ssMessageArea;
         private ToolStripStatusLabel tslbMessage;
-        private RadioButton rbNone;
     }
 }

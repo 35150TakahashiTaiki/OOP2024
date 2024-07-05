@@ -66,9 +66,7 @@ namespace CarReportSystem {
                 return CarReport.MakerGroup.スバル;
             } else if (rbInport.Checked) {
                 return CarReport.MakerGroup.輸入車;
-            } else if (rbNone.Checked) {
-                return CarReport.MakerGroup.なし;
-            } else return CarReport.MakerGroup.その他;
+            }  else return CarReport.MakerGroup.その他;
         }
 
         //指定したラジオボタンをセット
