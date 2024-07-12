@@ -3,8 +3,12 @@ using System.ComponentModel;
 using System.Diagnostics.Metrics;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Forms;
+using System.Xml;
+using System.Xml.Serialization;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
+
+
 
 namespace CarReportSystem {
     public partial class Form1 : Form {
@@ -17,6 +21,9 @@ namespace CarReportSystem {
             InitializeComponent();
             dvgCarReport.DataSource = listCarReports;
         }
+
+        //設定クラスのインスタンス生成
+        Settings? settings = new Settings();
 
         private void btAddReport_Click(object sender, EventArgs e) {
 
@@ -123,7 +130,26 @@ namespace CarReportSystem {
             //交互に色を設定（データグリッドビュー）
             dvgCarReport.RowsDefaultCellStyle.BackColor = Color.Cyan;
             dvgCarReport.AlternatingRowsDefaultCellStyle.BackColor = Color.AliceBlue;
+
+            if (File.Exists("settings.xml")) {
+                //設定ファイルを逆シリアル化して背景を設定
+                try {
+                    using (var reader = XmlReader.Create("settings.xml")) {
+                        var serializer = new XmlSerializer(typeof(Settings));
+                        settings = serializer.Deserialize(reader) as Settings;
+                        BackColor = Color.FromArgb(settings.MainFormColor);
+                        settings.MainFormColor = BackColor.ToArgb();
+                    }
+                }
+                catch (Exception) {
+                    
+                }
+            } else {
+                tslbMessage.Text = "色情報ファイルがありません";
+            }
+
         }
+        
 
         private void dvgCarReport_Click(object sender, EventArgs e) {
             if ((dvgCarReport.Rows.Count == 0) || (!dvgCarReport.CurrentRow.Selected)) return;
@@ -250,9 +276,32 @@ namespace CarReportSystem {
         }
 
         private void 終了ToolStripMenuItem_Click(object sender, EventArgs e) {
-            var daialog  = MessageBox.Show("本当に終了しますか？","確認",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
-            if(daialog == DialogResult.Yes)
-            Application.Exit();
+            var daialog = MessageBox.Show("本当に終了しますか？", "確認", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (daialog == DialogResult.Yes)
+                Application.Exit();
+        }
+
+        private void 色設定ToolStripMenuItem_Click(object sender, EventArgs e) {
+            //ダイアログを表示する
+            if (cdColor.ShowDialog() == DialogResult.OK) {
+                //選択した色を取得               
+                this.BackColor = cdColor.Color;//背景色設定
+                settings.MainFormColor = cdColor.Color.ToArgb();//背景色保存
+
+            }
+        }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e) {
+            //設定ファイルのシリアル化
+            try {
+                using(var writer = XmlWriter.Create("settings.xml")) {
+                    var serializer = new XmlSerializer(settings.GetType());
+                    serializer.Serialize(writer, settings);
+                }          
+            }
+            catch(Exception) {
+                MessageBox.Show("設定ファイル書き込みエラー");
+            }
         }
     }
 }
