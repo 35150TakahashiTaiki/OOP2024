@@ -23,7 +23,7 @@ namespace CarReportSystem {
         }
 
         //設定クラスのインスタンス生成
-        Settings? settings = new Settings();
+        Settings? settings = Settings.getInstance();
 
         private void btAddReport_Click(object sender, EventArgs e) {
 
@@ -131,8 +131,8 @@ namespace CarReportSystem {
             dvgCarReport.RowsDefaultCellStyle.BackColor = Color.Cyan;
             dvgCarReport.AlternatingRowsDefaultCellStyle.BackColor = Color.AliceBlue;
 
-            if (File.Exists("settings.xml")) {
-                //設定ファイルを逆シリアル化して背景を設定
+            //設定ファイルを逆シリアル化して背景を設定
+            if (File.Exists("settings.xml")) {    
                 try {
                     using (var reader = XmlReader.Create("settings.xml")) {
                         var serializer = new XmlSerializer(typeof(Settings));
