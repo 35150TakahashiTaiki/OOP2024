@@ -132,7 +132,7 @@ namespace CarReportSystem {
             dvgCarReport.AlternatingRowsDefaultCellStyle.BackColor = Color.AliceBlue;
 
             //設定ファイルを逆シリアル化して背景を設定
-            if (File.Exists("settings.xml")) {    
+            if (File.Exists("settings.xml")) {
                 try {
                     using (var reader = XmlReader.Create("settings.xml")) {
                         var serializer = new XmlSerializer(typeof(Settings));
@@ -142,14 +142,14 @@ namespace CarReportSystem {
                     }
                 }
                 catch (Exception) {
-                    
+
                 }
             } else {
                 tslbMessage.Text = "色情報ファイルがありません";
             }
 
         }
-        
+
 
         private void dvgCarReport_Click(object sender, EventArgs e) {
             if ((dvgCarReport.Rows.Count == 0) || (!dvgCarReport.CurrentRow.Selected)) return;
@@ -294,14 +294,19 @@ namespace CarReportSystem {
         private void Form1_FormClosed(object sender, FormClosedEventArgs e) {
             //設定ファイルのシリアル化
             try {
-                using(var writer = XmlWriter.Create("settings.xml")) {
+                using (var writer = XmlWriter.Create("settings.xml")) {
                     var serializer = new XmlSerializer(settings.GetType());
                     serializer.Serialize(writer, settings);
-                }          
+                }
             }
-            catch(Exception) {
+            catch (Exception) {
                 MessageBox.Show("設定ファイル書き込みエラー");
             }
+        }
+
+        private void このアプリについてToolStripMenuItem_Click(object sender, EventArgs e) {
+            var fmversion = new FmVersion();
+            fmversion.Show();
         }
     }
 }
