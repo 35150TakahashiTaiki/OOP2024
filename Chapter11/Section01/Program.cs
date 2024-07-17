@@ -10,7 +10,7 @@ namespace Section01 {
         static void Main(string[] args) {
 
             var xdoc = XDocument.Load("novelists.xml");
-            var xelements = xdoc.Root.Descendants("title");
+            var xelements = xdoc.Root.Elements();
                             
                 //.Where(x=> ((DateTime)x.Element("birth")).Year>=1900);
             foreach ( var xnovelist in xelements ) {
@@ -20,7 +20,7 @@ namespace Section01 {
                                         .Elements("title")
                                         .Select(x => x.Value);
                 //var birth = (DateTime)xnovelist.Element("birth");//要素の取得
-                Console.WriteLine("{0}-{1}", xname.Value, string.Join(",", xworks));
+                Console.WriteLine("{0}-{1}",xname.Value,string.Join(",",xworks));
 
             }
 
