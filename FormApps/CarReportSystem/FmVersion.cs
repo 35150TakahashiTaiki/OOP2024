@@ -26,7 +26,7 @@ namespace CarReportSystem {
             var ver =FileVersionInfo.GetVersionInfo(location);
             labelver.Text = "ver"+ver.FileVersion;
             labelText.Text = "copyright("+ver.LegalCopyright+")"+" "+
-                             ver.CompanyName   ;
+                             ver.CompanyName;
 
         }
     }

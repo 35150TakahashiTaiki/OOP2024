@@ -8,9 +8,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Title>CarReportSystem</Title>
 	<Version>1.2.12.0</Version>
-	  <Auther>山田</Auther>
-	  <Copyright>c</Copyright>
-	  <company>太田情報</company>
+	<Auther>山田</Auther>
+	<Copyright>c</Copyright>
+	<company>太田情報</company>
     <AssemblyVersion>2.0.0.2</AssemblyVersion>
   </PropertyGroup>
 
