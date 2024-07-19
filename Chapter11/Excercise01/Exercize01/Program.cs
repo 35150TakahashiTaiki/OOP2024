@@ -54,12 +54,21 @@ namespace Exercise01 {
 
         private static void Exercise1_3(string file) {
             var xdoc = XDocument.Load(file);
-            var xelements = xdoc.Root.Elements().Max(x => (string)x.Element("teammembers"));
-            Console.WriteLine(xelements.ToString());
+            var xelements = xdoc.Root.Elements().OrderByDescending(x=>x.Element("teammembers").Value).First();
+            Console.WriteLine($"{xelements.Element("name").Value}");
         }
 
         private static void Exercise1_4(string file, string newfile) {
+            var element = new XElement(file,
+                new XElement("name", "サッカー", new XAttribute("kanji", "蹴球")),
+                new XElement("teammembers", "11"),
+                new XElement("firstplayed", "1863")
+              );
+            var xdoc = XDocument.Load(file);
+            xdoc.Root.Add(element);
 
+            xdoc.Save(newfile);
         }
     }
+
 }
