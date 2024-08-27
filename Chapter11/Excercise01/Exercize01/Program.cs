@@ -88,6 +88,7 @@ namespace Exercise01 {
                 var readteammembers = Console.ReadLine();
                 Console.Write("起源：");
                 var readfirstplayed = Console.ReadLine();
+
                 //一件分の要素作成
                 var element = new XElement(file,
                    new XElement("name", readname, new XAttribute("kanji", readkanji)),
