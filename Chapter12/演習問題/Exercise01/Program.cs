@@ -71,12 +71,10 @@ namespace Exercise01 {
                 IndentChars = " ",
             };
 
-            var empCollection = new EmpCollection {
-                Employee = emps
-            };
+      
             using (var writer = XmlWriter.Create(outfile, settings)) {
-                var serializer = new XmlSerializer(outfile.GetType());
-                serializer.Serialize(writer, outfile);
+                var serializer = new DataContractSerializer(outfile.GetType());
+                serializer.WriteObject(writer, outfile);
             }
         }
 
