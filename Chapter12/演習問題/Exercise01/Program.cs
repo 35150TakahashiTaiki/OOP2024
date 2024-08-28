@@ -73,13 +73,19 @@ namespace Exercise01 {
 
       
             using (var writer = XmlWriter.Create(outfile, settings)) {
-                var serializer = new DataContractSerializer(outfile.GetType());
-                serializer.WriteObject(writer, outfile);
+                var serializer = new DataContractSerializer(emps.GetType());
+                serializer.WriteObject(writer, emps);
             }
         }
 
         private static void Exercise1_3(string file) {
-            
+            using (var reader = XmlReader.Create(file)) {
+                var serializer = new DataContractSerializer(typeof(Employee[]));
+                var emps = serializer.ReadObject(reader) as Employee[];
+                foreach(var emp in emps) {
+                    Console.WriteLine(emp.Id+" "+emp.Name + " " + emp.HireDate);
+                }
+            }
         }
 
         private static void Exercise1_4(string file) {
