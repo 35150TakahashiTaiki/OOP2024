@@ -54,6 +54,7 @@
             this.lbRssTitle.Name = "lbRssTitle";
             this.lbRssTitle.Size = new System.Drawing.Size(586, 232);
             this.lbRssTitle.TabIndex = 2;
+            this.lbRssTitle.Click += new System.EventHandler(this.lbRssTitle_Click);
             // 
             // webBrowser1
             // 
@@ -74,6 +75,7 @@
             this.Controls.Add(this.tbRssUrl);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
