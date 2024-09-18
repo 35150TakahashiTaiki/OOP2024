@@ -48,9 +48,9 @@
             // 
             this.lbRssTitle.FormattingEnabled = true;
             this.lbRssTitle.ItemHeight = 12;
-            this.lbRssTitle.Location = new System.Drawing.Point(33, 143);
+            this.lbRssTitle.Location = new System.Drawing.Point(12, 143);
             this.lbRssTitle.Name = "lbRssTitle";
-            this.lbRssTitle.Size = new System.Drawing.Size(266, 520);
+            this.lbRssTitle.Size = new System.Drawing.Size(266, 592);
             this.lbRssTitle.TabIndex = 2;
             this.lbRssTitle.Click += new System.EventHandler(this.lbRssTitle_Click);
             // 
@@ -59,9 +59,9 @@
             this.webView21.AllowExternalDrop = true;
             this.webView21.CreationProperties = null;
             this.webView21.DefaultBackgroundColor = System.Drawing.Color.White;
-            this.webView21.Location = new System.Drawing.Point(305, 143);
+            this.webView21.Location = new System.Drawing.Point(284, 143);
             this.webView21.Name = "webView21";
-            this.webView21.Size = new System.Drawing.Size(777, 516);
+            this.webView21.Size = new System.Drawing.Size(998, 599);
             this.webView21.TabIndex = 4;
             this.webView21.ZoomFactor = 1D;
             // 
@@ -85,7 +85,7 @@
             // 
             // btToroku
             // 
-            this.btToroku.Location = new System.Drawing.Point(761, 63);
+            this.btToroku.Location = new System.Drawing.Point(761, 52);
             this.btToroku.Name = "btToroku";
             this.btToroku.Size = new System.Drawing.Size(75, 23);
             this.btToroku.TabIndex = 8;
@@ -112,7 +112,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1142, 751);
+            this.ClientSize = new System.Drawing.Size(1294, 769);
             this.Controls.Add(this.cbName);
             this.Controls.Add(this.cbRssUrl);
             this.Controls.Add(this.btToroku);

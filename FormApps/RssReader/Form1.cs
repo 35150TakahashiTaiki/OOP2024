@@ -33,6 +33,10 @@ namespace RssReader {
 
         List<ItemData> xitems;
 
+        List<string> topics = new List<string> {
+            "主要", "国内", "国際", "経済", "エンタメ", "スポーツ", "IT", "科学", "地域"
+        };
+
         private void btGet_Click(object sender, EventArgs e) {
             using(var wc = new WebClient()) {
                 var url = wc.OpenRead(cbRssUrl.Text);
@@ -56,10 +60,6 @@ namespace RssReader {
 
         private void Form1_Load(object sender, EventArgs e) {
             InitializeAsync();
-            List<string> topics = new List<string> {
-                "主要", "国内", "国際", "経済", "エンタメ", "スポーツ", "IT", "科学", "地域"
-            };
-
 
             cbRssUrl.Items.AddRange(topics.ToArray());
         }
