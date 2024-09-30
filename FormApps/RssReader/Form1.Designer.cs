@@ -58,21 +58,20 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(33, 22);
+            this.label1.Location = new System.Drawing.Point(27, 21);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(86, 12);
+            this.label1.Size = new System.Drawing.Size(136, 12);
             this.label1.TabIndex = 5;
-            this.label1.Text = "お気に入り名称：";
-            
+            this.label1.Text = "お気に入り名称またはURL：";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(33, 58);
+            this.label2.Location = new System.Drawing.Point(12, 58);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(129, 12);
+            this.label2.Size = new System.Drawing.Size(159, 12);
             this.label2.TabIndex = 7;
-            this.label2.Text = "追加するお気に入り名称：";
+            this.label2.Text = "追加/削除するお気に入り名称：";
             // 
             // btToroku
             // 
@@ -87,7 +86,7 @@
             // cbRssUrl
             // 
             this.cbRssUrl.FormattingEnabled = true;
-            this.cbRssUrl.Location = new System.Drawing.Point(160, 18);
+            this.cbRssUrl.Location = new System.Drawing.Point(169, 18);
             this.cbRssUrl.Name = "cbRssUrl";
             this.cbRssUrl.Size = new System.Drawing.Size(586, 20);
             this.cbRssUrl.TabIndex = 9;
@@ -96,7 +95,7 @@
             // cbName
             // 
             this.cbName.FormattingEnabled = true;
-            this.cbName.Location = new System.Drawing.Point(160, 55);
+            this.cbName.Location = new System.Drawing.Point(169, 55);
             this.cbName.Name = "cbName";
             this.cbName.Size = new System.Drawing.Size(586, 20);
             this.cbName.TabIndex = 10;
