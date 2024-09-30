@@ -23,7 +23,6 @@
         /// コード エディターで変更しないでください。
         /// </summary>
         private void InitializeComponent() {
-            this.btGet = new System.Windows.Forms.Button();
             this.lbRssTitle = new System.Windows.Forms.ListBox();
             this.webView21 = new Microsoft.Web.WebView2.WinForms.WebView2();
             this.label1 = new System.Windows.Forms.Label();
@@ -31,18 +30,9 @@
             this.btToroku = new System.Windows.Forms.Button();
             this.cbRssUrl = new System.Windows.Forms.ComboBox();
             this.cbName = new System.Windows.Forms.ComboBox();
+            this.btdelete = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.webView21)).BeginInit();
             this.SuspendLayout();
-            // 
-            // btGet
-            // 
-            this.btGet.Location = new System.Drawing.Point(761, 16);
-            this.btGet.Name = "btGet";
-            this.btGet.Size = new System.Drawing.Size(75, 23);
-            this.btGet.TabIndex = 1;
-            this.btGet.Text = "取得";
-            this.btGet.UseVisualStyleBackColor = true;
-            this.btGet.Click += new System.EventHandler(this.btGet_Click);
             // 
             // lbRssTitle
             // 
@@ -52,7 +42,7 @@
             this.lbRssTitle.Name = "lbRssTitle";
             this.lbRssTitle.Size = new System.Drawing.Size(266, 592);
             this.lbRssTitle.TabIndex = 2;
-            this.lbRssTitle.Click += new System.EventHandler(this.lbRssTitle_Click);
+            this.lbRssTitle.SelectedIndexChanged += new System.EventHandler(this.lbRssTitle_SelectedIndexChanged);
             // 
             // webView21
             // 
@@ -70,27 +60,29 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(33, 22);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(130, 12);
+            this.label1.Size = new System.Drawing.Size(86, 12);
             this.label1.TabIndex = 5;
-            this.label1.Text = "URL又はお気に入り名称：";
+            this.label1.Text = "お気に入り名称：";
+            
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(77, 58);
+            this.label2.Location = new System.Drawing.Point(33, 58);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(86, 12);
+            this.label2.Size = new System.Drawing.Size(129, 12);
             this.label2.TabIndex = 7;
-            this.label2.Text = "お気に入り名称：";
+            this.label2.Text = "追加するお気に入り名称：";
             // 
             // btToroku
             // 
-            this.btToroku.Location = new System.Drawing.Point(761, 52);
+            this.btToroku.Location = new System.Drawing.Point(761, 18);
             this.btToroku.Name = "btToroku";
             this.btToroku.Size = new System.Drawing.Size(75, 23);
             this.btToroku.TabIndex = 8;
             this.btToroku.Text = "登録";
             this.btToroku.UseVisualStyleBackColor = true;
+            this.btToroku.Click += new System.EventHandler(this.btToroku_Click);
             // 
             // cbRssUrl
             // 
@@ -99,6 +91,7 @@
             this.cbRssUrl.Name = "cbRssUrl";
             this.cbRssUrl.Size = new System.Drawing.Size(586, 20);
             this.cbRssUrl.TabIndex = 9;
+            this.cbRssUrl.SelectedIndexChanged += new System.EventHandler(this.cbRssUrl_SelectedIndexChanged);
             // 
             // cbName
             // 
@@ -108,11 +101,22 @@
             this.cbName.Size = new System.Drawing.Size(586, 20);
             this.cbName.TabIndex = 10;
             // 
+            // btdelete
+            // 
+            this.btdelete.Location = new System.Drawing.Point(761, 58);
+            this.btdelete.Name = "btdelete";
+            this.btdelete.Size = new System.Drawing.Size(75, 23);
+            this.btdelete.TabIndex = 11;
+            this.btdelete.Text = "削除";
+            this.btdelete.UseVisualStyleBackColor = true;
+            this.btdelete.Click += new System.EventHandler(this.btdelete_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1294, 769);
+            this.Controls.Add(this.btdelete);
             this.Controls.Add(this.cbName);
             this.Controls.Add(this.cbRssUrl);
             this.Controls.Add(this.btToroku);
@@ -120,10 +124,8 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.webView21);
             this.Controls.Add(this.lbRssTitle);
-            this.Controls.Add(this.btGet);
             this.Name = "Form1";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.webView21)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -131,7 +133,6 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button btGet;
         private System.Windows.Forms.ListBox lbRssTitle;
         private Microsoft.Web.WebView2.WinForms.WebView2 webView21;
         private System.Windows.Forms.Label label1;
@@ -139,6 +140,7 @@
         private System.Windows.Forms.Button btToroku;
         private System.Windows.Forms.ComboBox cbRssUrl;
         private System.Windows.Forms.ComboBox cbName;
+        private System.Windows.Forms.Button btdelete;
     }
 }
 
