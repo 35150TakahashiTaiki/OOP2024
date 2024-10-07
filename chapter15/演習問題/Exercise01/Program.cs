@@ -61,8 +61,11 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_5() {
-            var category = Library.Books.Where(a => a.PublishedYear == 2016);
-            foreach (var item in category) {
+            var query = Library.Books.Where(a => a.PublishedYear == 2016)
+                                        .Join(Library.Categories,book => book.CategoryId
+                                                                ,category => category.Id
+                                                                ,(book,category)=>category.Name).Distinct();
+            foreach (var item in query) {
                 Console.WriteLine(item);
             }
         }
@@ -70,7 +73,8 @@ namespace Exercise01 {
         private static void Exercise1_6() {
             var groups= Library.Categories.GroupJoin(Library.Books,c=>c.Id
                                                                   ,b=>b.CategoryId,
-                                                     (c, books) => new {Category=c.Name, Books=books}).OrderBy(y=>y.Category);
+                                                     (c, books) => new {Category=c.Name, Books=books})
+                                                    .OrderBy(y=>y.Category);
             foreach (var item in groups) {
                 Console.WriteLine($"#{item.Category}");
                 foreach (var book in item.Books) {
@@ -80,9 +84,16 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_7() {
-            var category = Library.Books.Where(a => a.CategoryId == 1).OrderBy(s=>s.PublishedYear);
-            foreach (var item in category) {
-                Console.WriteLine($"#{item.PublishedYear}");
+            var category = Library.Categories.Single(a => a.Name == "Development").Id;
+            var query = Library.Books.Where(b => b.CategoryId == category)
+                                     .GroupBy(b => b.PublishedYear)
+                                     .OrderBy(b => b.Key);
+            
+            foreach (var item in query) {
+                Console.WriteLine($"#{item.Key}年");
+                foreach(var title in item) {
+                    Console.WriteLine($" {title.Title}");
+                }
                 
             }
 
