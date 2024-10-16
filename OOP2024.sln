@@ -157,6 +157,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Strategy", "Strategy", "{83
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DistanceConverter", "Chapter17\Strategy\DistanceConverter\DistanceConverter.csproj", "{4951D2B3-E818-4A2E-A361-3A9E36204CAE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextNumberSizeChange", "Chapter17\TemplateMethod\TextNumberSizeChange\TextNumberSizeChange.csproj", "{6E32EB7B-343D-4EF2-8A12-D8597CC9C4B7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -549,6 +551,14 @@ Global
 		{4951D2B3-E818-4A2E-A361-3A9E36204CAE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4951D2B3-E818-4A2E-A361-3A9E36204CAE}.Release|x86.ActiveCfg = Release|Any CPU
 		{4951D2B3-E818-4A2E-A361-3A9E36204CAE}.Release|x86.Build.0 = Release|Any CPU
+		{6E32EB7B-343D-4EF2-8A12-D8597CC9C4B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E32EB7B-343D-4EF2-8A12-D8597CC9C4B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E32EB7B-343D-4EF2-8A12-D8597CC9C4B7}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{6E32EB7B-343D-4EF2-8A12-D8597CC9C4B7}.Debug|x86.Build.0 = Debug|Any CPU
+		{6E32EB7B-343D-4EF2-8A12-D8597CC9C4B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E32EB7B-343D-4EF2-8A12-D8597CC9C4B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E32EB7B-343D-4EF2-8A12-D8597CC9C4B7}.Release|x86.ActiveCfg = Release|Any CPU
+		{6E32EB7B-343D-4EF2-8A12-D8597CC9C4B7}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -615,6 +625,7 @@ Global
 		{8ACE805F-D93F-47EA-8B2F-0CDAF5A13E76} = {DCE7E50A-BF8E-4CA6-A6CB-228AFBD5D434}
 		{83CD1610-0EE2-4EE6-897A-D07891C0D5B8} = {0ED922D4-89E6-4F22-8B5B-75666166959F}
 		{4951D2B3-E818-4A2E-A361-3A9E36204CAE} = {83CD1610-0EE2-4EE6-897A-D07891C0D5B8}
+		{6E32EB7B-343D-4EF2-8A12-D8597CC9C4B7} = {0ED922D4-89E6-4F22-8B5B-75666166959F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {92AAEDCC-0036-4922-B3B9-E5FCC55D3987}
