@@ -5,9 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using TextFileProcessor;
 using System.IO;
+using TextNumberSizeChange.Framework;
 
 namespace TextNumberSizeChange {
-    class ToHankakuProcesser : TextProcessor {
+    class ToHankakuProcesser : ITextFileService {
 
         private Dictionary<char, char> fullWidthToHalfWidth = new Dictionary<char, char> {
             {'０', '0'}, {'１', '1'}, {'２', '2'}, {'３', '3'},
@@ -18,12 +19,12 @@ namespace TextNumberSizeChange {
         private int _count;
         string _text = "";
 
-        protected override void Initialize(string fname) {
+        public void Initialize(string fname) {
             _count = 0;
 
         }
 
-        protected override void Execute(string line) {
+        public void Execute(string line) {
             
            
             string convertedLine = ConvertFullToHalf(line);
@@ -31,7 +32,7 @@ namespace TextNumberSizeChange {
             _count++;
         }
 
-        protected override void Terminate() {
+        public void Terminate() {
             
             Console.WriteLine("{0}行",_count);
         }
@@ -48,5 +49,10 @@ namespace TextNumberSizeChange {
             }
             return new string(result);
         }
+
+        
+
+        
+
     }
 }
