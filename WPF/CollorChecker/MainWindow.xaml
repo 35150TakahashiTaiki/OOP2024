@@ -57,8 +57,8 @@
                 <RowDefinition Height="5*"/>
             </Grid.RowDefinitions>
 
-            <Button x:Name="stockBotton" Grid.Row="0" Content="STOCK" VerticalAlignment="Center" Margin="10"/>
-            <ListBox x:Name="list" Grid.Row="1" Margin="10"/>
+            <Button x:Name="stockBotton" Grid.Row="0" Content="STOCK" VerticalAlignment="Center" Margin="10" Click="stockBotton_Click"/>
+            <ListBox x:Name="list" Grid.Row="1" Margin="10" FontFamily="Yu Gothic Light" SelectionChanged="list_SelectionChanged" />
         </Grid>
     </Grid>
 </Window>

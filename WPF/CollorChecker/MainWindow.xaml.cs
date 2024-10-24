@@ -18,20 +18,33 @@ namespace CollorChecker {
     /// MainWindow.xaml の相互作用ロジック
     /// </summary>
     public partial class MainWindow : Window {
+        MyColor currentColer = new MyColor();
+
         public MainWindow() {
             InitializeComponent();
         }
 
         private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e) {
-            var rvalue = (int)rSlider.Value;
-            var gvalue = (int)gSlider.Value;
-            var bvalue = (int)bSlider.Value;
-            byte red = (byte)rvalue; 
-            byte green = (byte)gvalue; ;
-            byte blue = (byte)bvalue; ;
+            currentColer.Color = Color.FromRgb((byte)rSlider.Value, (byte)gSlider.Value, (byte)bSlider.Value);
+            colorArea.Background = new SolidColorBrush(currentColer.Color);
+        }
 
-            
-            colorArea.Background = new SolidColorBrush(Color.FromArgb(0xFF, red, green, blue));
+        private void stockBotton_Click(object sender, RoutedEventArgs e) {
+            currentColer = new MyColor {
+                Color = Color.FromRgb((byte)rSlider.Value, (byte)gSlider.Value, (byte)bSlider.Value),
+                Name = "",
+        };
+            list.Items.Insert(0, currentColer);
+
+        }
+
+        private void list_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+            if (list.SelectedItem is MyColor selectedColor) {
+                rValue.Text = selectedColor.Color.R.ToString();
+                gValue.Text = selectedColor.Color.G.ToString();
+                bValue.Text = selectedColor.Color.B.ToString();
+            }
+
         }
     }
 }
