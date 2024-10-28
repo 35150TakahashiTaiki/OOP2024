@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -12,16 +13,19 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Reflection;
 
 namespace CollorChecker {
-    /// <summary>
-    /// MainWindow.xaml の相互作用ロジック
-    /// </summary>
+    
     public partial class MainWindow : Window {
-        MyColor currentColer = new MyColor();
+        MyColor currentColer;
+
 
         public MainWindow() {
             InitializeComponent();
+            //αチャンネルの初期値を設定（起動時すぐにストックボタンが押された時の対応）
+            currentColer.Color = Color.FromArgb(255,0,0,0);
+            DataContext = GetColorList();
         }
 
         private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e) {
@@ -30,21 +34,47 @@ namespace CollorChecker {
         }
 
         private void stockBotton_Click(object sender, RoutedEventArgs e) {
-            currentColer = new MyColor {
-                Color = Color.FromRgb((byte)rSlider.Value, (byte)gSlider.Value, (byte)bSlider.Value),
-                Name = "",
-        };
-            list.Items.Insert(0, currentColer);
+            bool exists = false;
+            foreach (MyColor color in list.Items) {
+                if (color.Color == currentColer.Color) {
+                    exists = true;
+                    break;
+                }
+            }
+
+            if (!exists) {
+                list.Items.Insert(0, currentColer);
+            } else {
+                MessageBox.Show("この色はすでにストックされています。");
+            }
 
         }
 
         private void list_SelectionChanged(object sender, SelectionChangedEventArgs e) {
-            if (list.SelectedItem is MyColor selectedColor) {
-                rValue.Text = selectedColor.Color.R.ToString();
-                gValue.Text = selectedColor.Color.G.ToString();
-                bValue.Text = selectedColor.Color.B.ToString();
-            }
+            colorArea.Background = new SolidColorBrush(((MyColor)list.Items[list.SelectedIndex]).Color);
+            rSlider.Value = ((MyColor)list.Items[list.SelectedIndex]).Color.R;
+            gSlider.Value = ((MyColor)list.Items[list.SelectedIndex]).Color.G;
+            bSlider.Value = ((MyColor)list.Items[list.SelectedIndex]).Color.B;
 
+        }
+
+        /// <summary>
+        /// すべての色を取得するメソッド
+        /// </summary>
+        /// <returns></returns>
+        private MyColor[] GetColorList() {
+            return typeof(Colors).GetProperties(BindingFlags.Public | BindingFlags.Static)
+                .Select(i => new MyColor() { Color = (Color)i.GetValue(null), Name = i.Name }).ToArray();
+        }
+
+        private void s_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+            var mycolor=(MyColor)((ComboBox)sender).SelectedItem;
+            var color = mycolor.Color;
+            var name = mycolor.Name;
+
+            rSlider.Value = color.R;
+            gSlider.Value = color.G;
+            bSlider.Value = color.B;
         }
     }
 }

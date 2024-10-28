@@ -48,7 +48,20 @@
             <TextBox x:Name="bValue" Grid.Column="2" Grid.Row="2" VerticalAlignment="Center"  FontSize="20"
                      Text="{Binding ElementName=bSlider,Path=Value,Mode=TwoWay,StringFormat='{}{0:F0}',UpdateSourceTrigger=PropertyChanged}"/>
 
-            <ComboBox x:Name="s" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center"/>
+            <ComboBox x:Name="s" Grid.ColumnSpan="3" Grid.Row="3" VerticalAlignment="Center" ItemsSource="{Binding}"  SelectedValue="{Binding Color}" SelectionChanged="s_SelectionChanged">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Border Width="20" Height="Auto" Margin="5,0" BorderThickness="1" BorderBrush="Black"  >
+                                <Border.Background>
+                                    <SolidColorBrush Color="{Binding Color}"/>
+                                </Border.Background>
+                            </Border>
+                            <TextBlock Text="{Binding Name}"></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
             
         </Grid>
         <Grid Grid.Column="2">
@@ -59,6 +72,7 @@
 
             <Button x:Name="stockBotton" Grid.Row="0" Content="STOCK" VerticalAlignment="Center" Margin="10" Click="stockBotton_Click"/>
             <ListBox x:Name="list" Grid.Row="1" Margin="10" FontFamily="Yu Gothic Light" SelectionChanged="list_SelectionChanged" />
+    
         </Grid>
     </Grid>
 </Window>
