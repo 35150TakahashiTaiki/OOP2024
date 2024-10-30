@@ -27,12 +27,12 @@
                 <ColumnDefinition Width="3*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            
+
             <TextBlock Text="R" HorizontalAlignment="Center" Grid.Row="0" VerticalAlignment="Center" FontSize="30"/>
             <Slider x:Name="rSlider" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" Maximum="255" Minimum="0" ValueChanged="Slider_ValueChanged"/>
             <TextBox x:Name="rValue" Grid.Column="2" VerticalAlignment="Center" FontSize="20"
                      Text="{Binding ElementName=rSlider,Path=Value,Mode=TwoWay,StringFormat='{}{0:F0}',UpdateSourceTrigger=PropertyChanged}"/>
-            
+
 
 
             <TextBlock Text="G" HorizontalAlignment="Center"  Grid.Row="1" VerticalAlignment="Center" FontSize="30"/>
@@ -62,7 +62,7 @@
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
-            
+
         </Grid>
         <Grid Grid.Column="2">
             <Grid.RowDefinitions>
@@ -71,8 +71,9 @@
             </Grid.RowDefinitions>
 
             <Button x:Name="stockBotton" Grid.Row="0" Content="STOCK" VerticalAlignment="Center" Margin="10" Click="stockBotton_Click"/>
-            <ListBox x:Name="list" Grid.Row="1" Margin="10" FontFamily="Yu Gothic Light" SelectionChanged="list_SelectionChanged" />
-    
+            <ListBox x:Name="list" Grid.Row="1" Margin="10,10,10,25" FontFamily="Yu Gothic Light" SelectionChanged="list_SelectionChanged" />
+            <Button x:Name="deleteBotton" Grid.Row="2" Content="DELETE" HorizontalAlignment="Right"  Margin="3" VerticalAlignment="Bottom"  Width="50" Click="deleteBotton_Click"/>
+
         </Grid>
     </Grid>
 </Window>

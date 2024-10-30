@@ -28,9 +28,11 @@ namespace CollorChecker {
             DataContext = GetColorList();
         }
 
+
         private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e) {
             currentColer.Color = Color.FromRgb((byte)rSlider.Value, (byte)gSlider.Value, (byte)bSlider.Value);
             colorArea.Background = new SolidColorBrush(currentColer.Color);
+            currentColer.Name=null;
         }
 
         private void stockBotton_Click(object sender, RoutedEventArgs e) {
@@ -51,12 +53,19 @@ namespace CollorChecker {
         }
 
         private void list_SelectionChanged(object sender, SelectionChangedEventArgs e) {
-            colorArea.Background = new SolidColorBrush(((MyColor)list.Items[list.SelectedIndex]).Color);
-            rSlider.Value = ((MyColor)list.Items[list.SelectedIndex]).Color.R;
-            gSlider.Value = ((MyColor)list.Items[list.SelectedIndex]).Color.G;
-            bSlider.Value = ((MyColor)list.Items[list.SelectedIndex]).Color.B;
+            if (list.SelectedIndex != -1) {
+                colorArea.Background = new SolidColorBrush(((MyColor)list.Items[list.SelectedIndex]).Color);
+                setSliderValue(((MyColor)list.Items[list.SelectedIndex]).Color);
+            }
 
         }
+
+        private void setSliderValue(Color color) {
+            rSlider.Value = color.R;
+            gSlider.Value = color.G;
+            bSlider.Value = color.B;
+        }
+
 
         /// <summary>
         /// すべての色を取得するメソッド
@@ -72,9 +81,17 @@ namespace CollorChecker {
             var color = mycolor.Color;
             var name = mycolor.Name;
 
-            rSlider.Value = color.R;
-            gSlider.Value = color.G;
-            bSlider.Value = color.B;
+            setSliderValue(color);
+
+            currentColer.Name=name;
+        }
+
+        private void deleteBotton_Click(object sender, RoutedEventArgs e) {
+            if (list.SelectedIndex != -1) {
+                list.Items.Remove(list.Items[list.SelectedIndex]);
+            }
+            
+
         }
     }
 }
