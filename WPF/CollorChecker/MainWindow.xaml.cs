@@ -31,18 +31,27 @@ namespace CollorChecker {
 
         private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e) {
             currentColer.Color = Color.FromRgb((byte)rSlider.Value, (byte)gSlider.Value, (byte)bSlider.Value);
+            
             colorArea.Background = new SolidColorBrush(currentColer.Color);
             currentColer.Name=null;
         }
 
         private void stockBotton_Click(object sender, RoutedEventArgs e) {
             bool exists = false;
+
+            foreach (var color in (MyColor[])s.ItemsSource) {
+                if (color.Color == currentColer.Color) {
+                    currentColer.Name = color.Name;
+                    break;
+                }
+            }
             foreach (MyColor color in list.Items) {
                 if (color.Color == currentColer.Color) {
                     exists = true;
                     break;
                 }
             }
+            
 
             if (!exists) {
                 list.Items.Insert(0, currentColer);
@@ -90,8 +99,6 @@ namespace CollorChecker {
             if (list.SelectedIndex != -1) {
                 list.Items.Remove(list.Items[list.SelectedIndex]);
             }
-            
-
         }
     }
 }
