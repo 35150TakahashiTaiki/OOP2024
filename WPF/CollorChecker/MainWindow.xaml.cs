@@ -33,7 +33,7 @@ namespace CollorChecker {
             currentColer.Color = Color.FromRgb((byte)rSlider.Value, (byte)gSlider.Value, (byte)bSlider.Value);
             
             colorArea.Background = new SolidColorBrush(currentColer.Color);
-            currentColer.Name=null;
+            currentColer.Name=GetColorList().Where(c=>c.Color.Equals(currentColer.Color)).Select(x=>x.Name).FirstOrDefault() ;
         }
 
         private void stockBotton_Click(object sender, RoutedEventArgs e) {
