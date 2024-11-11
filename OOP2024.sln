@@ -173,6 +173,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleUnitConverter", "WPF\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleWeightUnitConverter", "WPF\SampleWeightUnitConverter\SampleWeightUnitConverter.csproj", "{7CB55216-90BA-421B-81A7-238852EA50C8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisibilityConverter", "WPF\VisibilityConverter\VisibilityConverter.csproj", "{78E91F52-6F7E-40D8-84ED-3F1D7EB10BFF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -621,6 +623,14 @@ Global
 		{7CB55216-90BA-421B-81A7-238852EA50C8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7CB55216-90BA-421B-81A7-238852EA50C8}.Release|x86.ActiveCfg = Release|Any CPU
 		{7CB55216-90BA-421B-81A7-238852EA50C8}.Release|x86.Build.0 = Release|Any CPU
+		{78E91F52-6F7E-40D8-84ED-3F1D7EB10BFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78E91F52-6F7E-40D8-84ED-3F1D7EB10BFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78E91F52-6F7E-40D8-84ED-3F1D7EB10BFF}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{78E91F52-6F7E-40D8-84ED-3F1D7EB10BFF}.Debug|x86.Build.0 = Debug|Any CPU
+		{78E91F52-6F7E-40D8-84ED-3F1D7EB10BFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78E91F52-6F7E-40D8-84ED-3F1D7EB10BFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78E91F52-6F7E-40D8-84ED-3F1D7EB10BFF}.Release|x86.ActiveCfg = Release|Any CPU
+		{78E91F52-6F7E-40D8-84ED-3F1D7EB10BFF}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -694,6 +704,7 @@ Global
 		{AD5AED25-D93D-4F14-8DF8-B74DBC3DAFE4} = {3F8B0BF5-8D64-45EF-8093-CCD5A622A57E}
 		{AED11D7E-DA87-44A1-B90E-10F19B52EA4F} = {3F8B0BF5-8D64-45EF-8093-CCD5A622A57E}
 		{7CB55216-90BA-421B-81A7-238852EA50C8} = {3F8B0BF5-8D64-45EF-8093-CCD5A622A57E}
+		{78E91F52-6F7E-40D8-84ED-3F1D7EB10BFF} = {3F8B0BF5-8D64-45EF-8093-CCD5A622A57E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {92AAEDCC-0036-4922-B3B9-E5FCC55D3987}
