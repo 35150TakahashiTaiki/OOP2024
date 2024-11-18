@@ -2,6 +2,7 @@
 using SQLite;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -22,6 +23,7 @@ namespace CustomerApp {
     /// </summary>
     public partial class MainWindow : Window {
         List<Customer> _customers;
+        private byte[] _imageData;
         public MainWindow() {
             InitializeComponent();
         }
@@ -31,6 +33,7 @@ namespace CustomerApp {
                 Name = NameTextBox.Text,
                 Phone = PhoneTextBox.Text,
                 Address = AddressTextBox.Text,
+                ImageData = _imageData,
             };
 
             //string databaseName = "Shop.db";
@@ -41,10 +44,31 @@ namespace CustomerApp {
                 connection.CreateTable<Customer>();
                 connection.Insert(cutomer);
             }
+
+            ReadDatabase();
         }
 
-        private void ReadButton_Click(object sender, RoutedEventArgs e) {
-            //ReadDatabase();
+        private void UpdateButton_Click(object sender, RoutedEventArgs e) {
+            var selectedCustomer = (Customer)CustomerListView.SelectedItem;
+
+            if (selectedCustomer == null) {
+                MessageBox.Show("更新する顧客を選択してください");
+                return;
+            }
+            selectedCustomer.Name = NameTextBox.Text;
+            selectedCustomer.Phone = PhoneTextBox.Text;
+            selectedCustomer.Address = AddressTextBox.Text;
+
+            using (var connection = new SQLiteConnection(App.databasePass)) {
+                connection.CreateTable<Customer>();
+                connection.Update(CustomerListView.SelectedItem);
+            }
+
+            ReadDatabase();
+
+            NameTextBox.Clear();
+            PhoneTextBox.Clear();
+            AddressTextBox.Clear();
         }
 
         private void ReadDatabase() {
@@ -77,6 +101,20 @@ namespace CustomerApp {
 
         private void Window_Loaded(object sender, RoutedEventArgs e) {
             ReadDatabase();
+        }
+
+        private void CustomerListView_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+            var selectedCustomer = (Customer)CustomerListView.SelectedItem;
+            if (selectedCustomer != null) {
+                NameTextBox.Text = selectedCustomer.Name;
+                PhoneTextBox.Text = selectedCustomer.Phone;
+                AddressTextBox.Text = selectedCustomer.Address;
+                
+            }
+        }
+
+        private void SelectImageButton_Click(object sender, RoutedEventArgs e) {
+            
         }
     }
 }

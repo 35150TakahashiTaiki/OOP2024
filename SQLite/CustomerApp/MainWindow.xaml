@@ -26,11 +26,13 @@
             </StackPanel>
             <Button Content="Save" x:Name="SaveButton" Click="SaveButton_Click"/>
             <Button Content="Delete" x:Name="DeleteButton" Click="DeleteButton_Click"/>
-            <Button Content="Read" x:Name="ReadButton" Click="ReadButton_Click"/>
+            <Button Content="Update" x:Name="UpdateButton" Click="UpdateButton_Click"/>
             <TextBox x:Name="SearchTextbox" FontSize="20" TextChanged="SearchTextbox_TextChanged"/>
-
-
-            <ListView x:Name="CustomerListView" Margin="0,5,0,0" Height="326">
+            <Button Content="画像を選択" x:Name="SelectImageButton" Click="SelectImageButton_Click"/>
+            <Image x:Name="CustomerImage" Width="250" Height="100">
+                
+            </Image>
+            <ListView x:Name="CustomerListView" Margin="0,5,0,0" Height="326" SelectionChanged="CustomerListView_SelectionChanged">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Vertical">
@@ -38,6 +40,7 @@
                             <TextBlock Text="{Binding Name}" FontSize="20"/>
                             <TextBlock Text="{Binding Phone}" Foreground="Blue"/>
                             <TextBlock Text="{Binding Address}" Foreground="Blue"/>
+                            
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
