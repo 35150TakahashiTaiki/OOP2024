@@ -27,9 +27,16 @@ namespace CustomerApp {
         public MainWindow() {
             InitializeComponent();
         }
-
+        //保存
         private void SaveButton_Click(object sender, RoutedEventArgs e) {
-            var cutomer = new Customer() {
+            if (NameTextBox.Text == "") {
+                MessageBox.Show("名前を入力してください。");
+                return;
+            }
+
+           
+
+            var customer = new Customer() {
                 Name = NameTextBox.Text,
                 Phone = PhoneTextBox.Text,
                 Address = AddressTextBox.Text,
@@ -42,12 +49,16 @@ namespace CustomerApp {
 
             using (var connection = new SQLiteConnection(App.databasePass)) {
                 connection.CreateTable<Customer>();
-                connection.Insert(cutomer);
+                connection.Insert(customer);
             }
 
-            ReadDatabase();
-        }
 
+            ReadDatabase();
+            ClearText();
+            _imageData = null;
+            CustomerImage.Source = null;
+        }
+        //更新
         private void UpdateButton_Click(object sender, RoutedEventArgs e) {
             var selectedCustomer = (Customer)CustomerListView.SelectedItem;
 
@@ -55,9 +66,15 @@ namespace CustomerApp {
                 MessageBox.Show("更新する顧客を選択してください");
                 return;
             }
+
+
+            
+        
+
             selectedCustomer.Name = NameTextBox.Text;
             selectedCustomer.Phone = PhoneTextBox.Text;
             selectedCustomer.Address = AddressTextBox.Text;
+            selectedCustomer.ImageData = _imageData;
 
             using (var connection = new SQLiteConnection(App.databasePass)) {
                 connection.CreateTable<Customer>();
@@ -65,12 +82,18 @@ namespace CustomerApp {
             }
 
             ReadDatabase();
+            
+            ClearText();
+        }
 
+        private void ClearText() {
             NameTextBox.Clear();
             PhoneTextBox.Clear();
             AddressTextBox.Clear();
+            SearchTextbox.Clear();
         }
 
+        //読み込み
         private void ReadDatabase() {
             using (var connection = new SQLiteConnection(App.databasePass)) {
                 connection.CreateTable<Customer>();
@@ -78,13 +101,13 @@ namespace CustomerApp {
                 CustomerListView.ItemsSource = _customers;
             }
         }
-
+        //検索
         private void SearchTextbox_TextChanged(object sender, TextChangedEventArgs e) {
             var filterList = _customers.Where(x => x.Name.Contains(SearchTextbox.Text)).ToList();
             CustomerListView.ItemsSource = filterList;
 
         }
-
+        //削除
         private void DeleteButton_Click(object sender, RoutedEventArgs e) {
             var item = CustomerListView.SelectedItem as Customer;
             if (item == null) {
@@ -97,6 +120,8 @@ namespace CustomerApp {
                 connection.Delete(item);
                 ReadDatabase();
             }
+
+            ClearText();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e) {
@@ -109,12 +134,31 @@ namespace CustomerApp {
                 NameTextBox.Text = selectedCustomer.Name;
                 PhoneTextBox.Text = selectedCustomer.Phone;
                 AddressTextBox.Text = selectedCustomer.Address;
-                
+                CustomerImage.Source = selectedCustomer.Image;
+
+            } else {
+                CustomerImage.Source = null; 
             }
+
+        }
+        //画像
+        private void SelectImageButton_Click(object sender, RoutedEventArgs e) {
+            var openFileDialog = new Microsoft.Win32.OpenFileDialog {
+                Filter = "Image files (*.jpg, *.jpeg, *.png)|*.jpg;*.jpeg;*.png"
+            };
+
+            if (openFileDialog.ShowDialog() == true) {
+                _imageData = File.ReadAllBytes(openFileDialog.FileName);
+
+                CustomerImage.Source = new BitmapImage(new Uri(openFileDialog.FileName));
+            }
+
+
         }
 
-        private void SelectImageButton_Click(object sender, RoutedEventArgs e) {
-            
+        private void ClearButton_Click(object sender, RoutedEventArgs e) {
+            CustomerImage.Source = null;
+            _imageData = null;
         }
     }
 }
