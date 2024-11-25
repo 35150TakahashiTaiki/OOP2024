@@ -38,14 +38,16 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
                 <Button Content="画像を選択" Grid.Column="0" Grid.Row="0" x:Name="SelectImageButton" Click="SelectImageButton_Click" Height="20"/>
-                <Button Content="クリア" Grid.Column="0" Grid.Row="1" x:Name="ClearButton" Click="ClearButton_Click" Height="20"/>
-                <Image x:Name="CustomerImage" Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" Width="150" Height="100" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Button Content="画像クリア" Grid.Column="0" Grid.Row="1" x:Name="ClearButton" Click="ClearButton_Click" Height="20"/>
+                <Button Content="全クリア" Grid.Column="0" Grid.Row="2" x:Name="AllClearButton" Click="AllClearButton_Click" Height="20"/>
+                <Image x:Name="CustomerImage" Grid.Column="1" Grid.Row="0" Grid.RowSpan="3" Width="150" Height="100" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </Grid>
 
-            <ListView x:Name="CustomerListView" Margin="0,5,0,0" Height="500" SelectionChanged="CustomerListView_SelectionChanged">
+            <ListView x:Name="CustomerListView" Margin="0,5,0,0" Height="500" SelectionChanged="CustomerListView_SelectionChanged" Background="AliceBlue">
                 <ListView.View>
                     <GridView>
                         

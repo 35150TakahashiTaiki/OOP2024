@@ -34,7 +34,7 @@ namespace CustomerApp {
                 return;
             }
 
-           
+
 
             var customer = new Customer() {
                 Name = NameTextBox.Text,
@@ -68,13 +68,16 @@ namespace CustomerApp {
             }
 
 
-            
-        
+
+
 
             selectedCustomer.Name = NameTextBox.Text;
             selectedCustomer.Phone = PhoneTextBox.Text;
             selectedCustomer.Address = AddressTextBox.Text;
-            selectedCustomer.ImageData = _imageData;
+
+            if (_imageData != null) {
+                selectedCustomer.ImageData = _imageData;
+            }
 
             using (var connection = new SQLiteConnection(App.databasePass)) {
                 connection.CreateTable<Customer>();
@@ -82,7 +85,7 @@ namespace CustomerApp {
             }
 
             ReadDatabase();
-            
+
             ClearText();
         }
 
@@ -137,7 +140,7 @@ namespace CustomerApp {
                 CustomerImage.Source = selectedCustomer.Image;
 
             } else {
-                CustomerImage.Source = null; 
+                CustomerImage.Source = null;
             }
 
         }
@@ -159,6 +162,13 @@ namespace CustomerApp {
         private void ClearButton_Click(object sender, RoutedEventArgs e) {
             CustomerImage.Source = null;
             _imageData = null;
+        }
+
+        private void AllClearButton_Click(object sender, RoutedEventArgs e) {
+            ClearText();
+            CustomerImage.Source = null;
+            _imageData = null;
+            CustomerListView.SelectedItem = null;
         }
     }
 }
